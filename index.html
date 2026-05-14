@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VIJAYAUTOSTORES | Premium Vehicle Parts</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header / nav */
+        header {
+            background: #0b2b26;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .logo p {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #cbd5e1;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+        .mobile-menu {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        /* hero section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a2f 0%, #0e2a23 100%);
+            color: white;
+            padding: 70px 0;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-text h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 28px;
+            color: #e2e8f0;
+        }
+        .contact-hero {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            background: #fbbf24;
+            color: #0f172a;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #fbbf24;
+            color: #fbbf24;
+        }
+        .btn-outline:hover {
+            background: #fbbf24;
+            color: #0f172a;
+        }
+        .hero-img {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-img img {
+            max-width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.3);
+        }
+
+        /* section general */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 48px;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            width: 70px;
+            height: 4px;
+            background: #fbbf24;
+            display: block;
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+
+        /* product gallery */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 28px -10px rgba(0,0,0,0.15);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #f1f5f9;
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .product-info p {
+            color: #334155;
+        }
+
+        /* features / about preview */
+        .about-preview {
+            background: #ffffff;
+        }
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-img {
+            flex: 1;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+        .address-block {
+            margin-top: 20px;
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        /* contact page style (inline) */
+        .contact-section {
+            background: #f1f5f9;
+        }
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .contact-details {
+            flex: 1;
+            background: white;
+            padding: 32px;
+            border-radius: 28px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .contact-details i {
+            color: #0b2b26;
+            width: 32px;
+            margin-right: 12px;
+        }
+        .contact-details p {
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        .map-placeholder {
+            flex: 1;
+            background: #e2e8f0;
+            border-radius: 28px;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #cbd5e1;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        /* footer & copyright */
+        footer {
+            background: #0b2b26;
+            color: #cbd5e1;
+            padding: 48px 0 24px;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 18px;
+        }
+        .footer-col p {
+            margin: 8px 0;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: #fbbf24;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #2d4a43;
+            padding-top: 24px;
+            font-size: 0.85rem;
+        }
+
+        /* page sections hidden until clicked (single page) */
+        .page-section {
+            display: none;
+        }
+        .page-section.active-section {
+            display: block;
+        }
+
+        /* buttons active */
+        .nav-links a.active {
+            color: #fbbf24;
+            border-bottom: 2px solid #fbbf24;
+        }
+
+        /* responsive */
+        @media (max-width: 800px) {
+            .navbar {
+                flex-direction: row;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: #0b2b26;
+                padding: 20px;
+                gap: 18px;
+                margin-top: 12px;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .hero-text h2 {
+                font-size: 2.2rem;
+            }
+        }
+        button, .btn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <h1>VIJAYAUTOSTORES</h1>
+                <p>Genuine Vehicle Parts</p>
+            </div>
+            <div class="mobile-menu" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" data-page="home" class="nav-item active">Home</a></li>
+                <li><a href="#" data-page="about" class="nav-item">About</a></li>
+                <li><a href="#" data-page="contact" class="nav-item">Contact</a></li>
+                <li><a href="#" data-page="privacy" class="nav-item">Privacy</a></li>
+                <li><a href="#" data-page="terms" class="nav-item">Terms</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- HOME SECTION -->
+    <div id="home" class="page-section active-section">
+        <div class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <h2>Power Your Ride<br>with Authentic Parts</h2>
+                        <p>Trusted vehicle parts supplier in Tamil Nadu — quality, reliability, and exceptional service.</p>
+                        <div class="contact-hero">
+                            <a href="#" class="btn" data-page="contact" id="heroContactBtn">Get in touch</a>
+                            <a href="tel:+917871167183" class="btn btn-outline"><i class="fas fa-phone-alt"></i> +91 78711 67183</a>
+                        </div>
+                    </div>
+                    <div class="hero-img">
+                        <img src="https://placehold.co/600x400/1e3a2f/white?text=Premium+Auto+Parts" alt="Auto Parts Showcase">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Products / Parts Gallery -->
+            <section>
+                <h2 class="section-title">Premium Vehicle Parts</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://placehold.co/400x250/334155/white?text=Engine+Components" alt="Engine Parts">
+                        <div class="product-info">
+                            <h3>Engine Components</h3>
+                            <p>Genuine pistons, gaskets, bearings & timing kits.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://placehold.co/400x250/2d4a43/white?text=Brake+System" alt="Brake Parts">
+                        <div class="product-info">
+                            <h3>Brake Systems</h3>
+                            <p>Disc pads, calipers, drums and brake shoes.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://placehold.co/400x250/475569/white?text=Suspension" alt="Suspension">
+                        <div class="product-info">
+                            <h3>Suspension & Steering</h3>
+                            <p>Shock absorbers, tie rods, control arms.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://placehold.co/400x250/0f172a/white?text=Electricals" alt="Electricals">
+                        <div class="product-info">
+                            <h3>Electrical Parts</h3>
+                            <p>Alternators, starters, sensors & lighting.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- short about preview -->
+            <section class="about-preview">
+                <div class="about-grid">
+                    <div class="about-img">
+                        <img src="https://placehold.co/600x450/1e293b/white?text=Our+Store+%26+Team" alt="Store front concept">
+                    </div>
+                    <div class="about-text">
+                        <h3>Over a decade of excellence</h3>
+                        <p>VIJAYAUTOSTORES has been a trusted name for genuine vehicle parts in Tirunelveli. We serve retail customers and workshops with high-quality spares and professional advice.</p>
+                        <div class="address-block">
+                            <i class="fas fa-map-marker-alt"></i> <strong>Showroom:</strong> 896K3, 30th street, Rahmath nagar, Palayamkottai, PO: Palayamkottai, Dist: Tirunelveli, Tamil Nadu - 627002
+                        </div>
+                        <a href="#" class="btn" data-page="about" style="margin-top: 20px; display: inline-block;">More About Us →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page-section">
+        <div class="container" style="padding: 80px 0;">
+            <h2 class="section-title">About VIJAYAUTOSTORES</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+                <div style="flex:1">
+                    <img src="https://placehold.co/600x450/0f172a/white?text=Professional+Auto+Store" alt="About store" style="width:100%; border-radius: 28px;">
+                </div>
+                <div style="flex:1">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 16px;">Your Reliable Partner on the Road</h3>
+                    <p style="margin-bottom: 16px;">Founded with a mission to provide authentic vehicle parts at competitive prices, VIJAYAUTOSTORES has grown into a premier destination for car and commercial vehicle spares in Southern Tamil Nadu.</p>
+                    <p style="margin-bottom: 16px;">We stock thousands of genuine OEM and quality aftermarket components. Our team’s technical expertise ensures you get the right part the first time.</p>
+                    <div style="background:#eef2ff; padding: 20px; border-radius: 24px; margin-top: 20px;">
+                        <i class="fas fa-clock"></i> <strong>Business Hours:</strong> Mon-Sat: 9:30 AM – 8:00 PM | Sunday: 10:00 AM – 2:00 PM<br>
+                        <i class="fas fa-truck"></i> <strong>Fast delivery across Tirunelveli & nearby regions.</strong>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 60px; background: #f1f5f9; border-radius: 28px; padding: 28px;">
+                <h3><i class="fas fa-store"></i> Visit Our Store</h3>
+                <p style="margin-top: 10px;">896K3, 30 th street, Rahmath nagar, Palayamkottai,<br> PO: Palayamkottai, Dist: Tiruneiveli, Tamil Nadu- 627002</p>
+                <p><i class="fas fa-phone-alt"></i> +91 78711 67183 &nbsp;|&nbsp; <i class="fas fa-envelope"></i> newtonvas19@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page-section">
+        <div class="container" style="padding: 80px 0;">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-wrapper">
+                <div class="contact-details">
+                    <h3 style="margin-bottom: 24px;">Get in touch</h3>
+                    <p><i class="fas fa-map-pin"></i> <strong>Address:</strong><br> 896K3, 30th street, Rahmath nagar, Palayamkottai, PO: Palayamkottai, Dist: Tiruneiveli, Tamil Nadu- 627002</p>
+                    <p><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:+917871167183" style="text-decoration: none; color:#0b2b26;">+91 78711 67183</a></p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> newtonvas19@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> <strong>Opening Hours:</strong><br> Monday – Saturday: 9:30 AM – 8:00 PM<br> Sunday: 10:00 AM – 2:00 PM</p>
+                    <div style="margin-top: 30px;">
+                        <a href="https://wa.me/917871167183?text=Hello%20VIJAYAUTOSTORES%2C%20I%20need%20vehicle%20parts" class="btn" style="background:#25D366; color:white;"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                    </div>
+                </div>
+                <div class="map-placeholder">
+                    <div style="text-align: center;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 48px; margin-bottom: 12px;"></i>
+                        <p><strong>📍 Palayamkottai, Tirunelveli</strong><br>Exact location: 30th street, Rahmath nagar</p>
+                        <small>Google Maps available on request</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY PAGE -->
+    <div id="privacy" class="page-section">
+        <div class="container" style="padding: 80px 0; max-width: 900px;">
+            <h2 class="section-title">Privacy Policy</h2>
+            <div style="background: white; border-radius: 28px; padding: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <p><strong>Effective Date:</strong> January 1, 2025</p>
+                <p>VIJAYAUTOSTORES respects your privacy. This policy describes how we collect, use, and protect your personal information when you visit our website or contact us.</p>
+                <h3>1. Information We Collect</h3>
+                <p>We may collect name, phone number, email address, and vehicle details when you inquire about products. We do not store payment information.</p>
+                <h3>2. Use of Information</h3>
+                <p>We use your information to respond to inquiries, process orders, improve service, and send occasional updates only if consented.</p>
+                <h3>3. Sharing Information</h3>
+                <p>We never sell or rent your personal data. We may share only for legal compliance or with delivery partners to fulfill orders.</p>
+                <h3>4. Data Security</h3>
+                <p>We implement reasonable security measures to protect your data from unauthorized access.</p>
+                <h3>5. Contact</h3>
+                <p>For privacy concerns, reach us at newtonvas19@gmail.com or +91 78711 67183.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TERMS AND CONDITIONS PAGE -->
+    <div id="terms" class="page-section">
+        <div class="container" style="padding: 80px 0; max-width: 900px;">
+            <h2 class="section-title">Terms & Conditions</h2>
+            <div style="background: white; border-radius: 28px; padding: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <p>Welcome to VIJAYAUTOSTORES. By using our website or purchasing from us, you agree to these terms.</p>
+                <h3>1. Products & Warranties</h3>
+                <p>We provide genuine and high-quality parts. Manufacturer warranties apply where applicable. Returns accepted within 7 days for unused parts with original packaging.</p>
+                <h3>2. Pricing & Availability</h3>
+                <p>Prices are subject to change without notice. We reserve the right to limit quantities.</p>
+                <h3>3. Orders & Payment</h3>
+                <p>Payments via cash, bank transfer, or UPI. For bulk orders, advance payment may be required.</p>
+                <h3>4. Shipping</h3>
+                <p>Delivery timelines depend on location. We ship across Tamil Nadu and major Indian cities.</p>
+                <h3>5. Limitation of Liability</h3>
+                <p>VIJAYAUTOSTORES is not liable for any indirect damages arising from the use of parts purchased.</p>
+                <h3>6. Governing Law</h3>
+                <p>These terms are governed by the laws of India, and disputes subject to Tirunelveli jurisdiction.</p>
+                <p><strong>Contact:</strong> newtonvas19@gmail.com / +91 78711 67183</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>VIJAYAUTOSTORES</h4>
+                <p>Genuine vehicle parts supplier in Tamil Nadu.</p>
+                <p><i class="fas fa-map-marker-alt"></i> Palayamkottai, Tirunelveli - 627002</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="about">About</a></li>
+                    <li><a href="#" data-page="contact">Contact</a></li>
+                    <li><a href="#" data-page="privacy">Privacy Policy</a></li>
+                    <li><a href="#" data-page="terms">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-phone"></i> +91 78711 67183</p>
+                <p><i class="fas fa-envelope"></i> newtonvas19@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 9:30AM - 8PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 VIJAYAUTOSTORES – All Rights Reserved. | Designed with <i class="fas fa-wrench"></i> for vehicle enthusiasts</p>
+            <p style="margin-top: 8px;">📍 896K3, 30th street, Rahmath nagar, Palayamkottai, Dist: Tiruneiveli, Tamil Nadu- 627002</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+
+    // single page navigation logic
+    const sections = ['home', 'about', 'contact', 'privacy', 'terms'];
+    function showPage(pageId) {
+        sections.forEach(id => {
+            const sectionEl = document.getElementById(id);
+            if (sectionEl) {
+                if (id === pageId) {
+                    sectionEl.classList.add('active-section');
+                } else {
+                    sectionEl.classList.remove('active-section');
+                }
+            }
+        });
+        // update active class on nav items
+        document.querySelectorAll('.nav-item').forEach(link => {
+            const linkPage = link.getAttribute('data-page');
+            if (linkPage === pageId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+        // close mobile menu after click
+        if (navLinks.classList.contains('show')) {
+            navLinks.classList.remove('show');
+        }
+        // scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Attach event listeners to all nav links (including footer links)
+    function bindNavEvents() {
+        const allNavLinks = document.querySelectorAll('[data-page]');
+        allNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                if (page && sections.includes(page)) {
+                    showPage(page);
+                }
+            });
+        });
+    }
+
+    // also handle hero contact button
+    const heroBtn = document.getElementById('heroContactBtn');
+    if(heroBtn) {
+        heroBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('contact');
+        });
+    }
+
+    // initial binding and default home active check
+    bindNavEvents();
+    // ensure default active section matches url (home)
+    const currentActive = document.querySelector('.nav-item.active');
+    if(!currentActive || !currentActive.getAttribute('data-page') === 'home'){
+        showPage('home');
+    }
+
+    // additional minor: footer links already use data-page, fine
+    // force home if none active by default
+</script>
+</body>
+</html>
